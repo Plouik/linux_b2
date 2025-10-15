@@ -1,0 +1,13 @@
+#/etc/systemd/system/monitoring.service
+[Unit]
+Description=Exécution périodique du monitoring
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/chemin/vers/votre/script-de-monitoring.sh
+# Remplacez le chemin par l'emplacement réel de votre script ou commande de monitoring
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
