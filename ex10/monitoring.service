@@ -4,10 +4,8 @@ Description=Exécution périodique du monitoring
 After=network.target
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/home/demo/linux_b2/ex10/report_audit.sh
-# Remplacez le chemin par l'emplacement réel de votre script ou commande de monitoring
-RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
