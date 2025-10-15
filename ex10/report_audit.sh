@@ -3,7 +3,7 @@
 
 LOG_NGINX="/var/log/nginx/access.log"
 AUDIT_LOG="/var/log/audit/audit.log"
-RAPPORT_DIR="/var/log/monitoring"
+RAPPORT_DIR="/home/demo/linux_b2/report"
 
 surveiller_nginx_audit() {
  local date_actuelle=$(date +"%Y-%m-%d")
@@ -34,14 +34,7 @@ surveiller_nginx_audit() {
  fi
 }
 
-# Configuration des règles d'audit pour nginx
-configurer_audit_nginx() {
- auditctl -w /var/log/nginx/ -p wa -k nginx_logs
- auditctl -w /etc/nginx/ -p wa -k nginx_config
- echo "Règles d'audit nginx configurées"
-}
 
 # Exécution
 mkdir -p "$RAPPORT_DIR"
-configurer_audit_nginx
 surveiller_nginx_audit

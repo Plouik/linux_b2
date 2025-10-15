@@ -1,11 +1,12 @@
 #/etc/systemd/system/monitoring.timer
 [Unit]
-Description=Timer pour l'exécution quotidienne du monitoring
-Requires=monitoring.service
-After=network.target
+Description=Timer pour l'exécution periodique du monitoring
 
 [Timer]
-OnCalendar=*:*/2
+OnCalendar=*:0/2
 Persistent=true
+Unit=monitoring.service
 # Persistent=true garantit que le timer se réenclenche si le système était éteint à l'heure prévue[Install]
+
+[Install]
 WantedBy=timers.target   
