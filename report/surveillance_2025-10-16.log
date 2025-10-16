@@ -1373,3 +1373,8 @@ Erreurs HTTP détectées: 4
 Erreurs HTTP détectées: 4
 --- Événements d'audit nginx ---
 Événements d audit nginx: 87
+=== Surveillance nginx + audit - jeu. 16 oct. 2025 15:46:46 CEST ===
+--- Activité nginx ---
+Erreurs HTTP détectées: 4
+--- Événements d'audit nginx ---
+Événements d audit nginx: 91
