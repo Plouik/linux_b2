@@ -22,16 +22,10 @@ surveiller_nginx_audit() {
  
  # Analyse des événements d'audit sur nginx
  echo "--- Événements d'audit nginx ---" >> "$fichier_rapport"
- ausearch -k nginx_logs -ts today 2>/dev/null | \
+ ausearch -k nginx_log -ts today 2>/dev/null | \
  grep -c "SYSCALL" | \
  awk '{print "Événements d audit nginx:", $1}' >> "$fichier_rapport"
- 
- # Alerte si nécessaire
- local erreurs=$(tail -n 50 "$LOG_NGINX" | grep -c " 5[0-9][0-9] ")
- if [[ $erreurs -gt 10 ]]; then
- logger -t nginx_monitor "ALERTE: $erreurs erreurs serveur détectées"
- echo "ALERTE: Niveau d'erreur élevé ($erreurs)" >> "$fichier_rapport"
- fi
+
 }
 
 
