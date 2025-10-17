@@ -1,1 +1,0 @@
-apt install openssh-server openssh-client net-tools 
