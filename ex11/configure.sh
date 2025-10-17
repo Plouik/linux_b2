@@ -1,3 +1,5 @@
+apt install acl
+
 folder="projet/collaboration"
 file="$folder/shared_file.txt"
 

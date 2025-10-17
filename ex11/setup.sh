@@ -1,18 +1,29 @@
-apt install acl
+user_list=("alice" "bob")
+group_list=("developers" "guests")
 
-useradd bob
-useradd alice
-groupadd developers
-groupadd guests
+for username in "${user_list[@]}"; do
+    if id "$username" &>/dev/null; then
+        echo "user: $username exists"
+    else
+        echo "Création du user $username"
+        useradd "$username"
+    fi
+done
+
+for group in "${group_list[@]}"; do
+    if getent group "$group" &>/dev/null; then
+        echo "group: $group exists"
+    else
+        echo "Création du group $group"
+        groupadd "$group"
+    fi
+done
+
+usermod -a -G guests bob
+usermod -a -G developers alice
 
 folder="projet/collaboration"
 file="$folder/shared_file.txt"
-
 mkdir -p "$folder"
 echo "test" > $file
-
-usermod -a -G guests bob
-
 echo "group" > "$folder/group_test.txt"
-
-cat ex11/projet/collaboration/group_test.txt
