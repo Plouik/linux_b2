@@ -1,0 +1,12 @@
+#/etc/systemd/system/monitoring.timer
+[Unit]
+Description=Timer pour l'exécution periodique du monitoring
+
+[Timer]
+OnUnitActiveSec=1m
+Persistent=true
+Unit=monitoring.service
+# Persistent=true garantit que le timer se réenclenche si le système était éteint à l'heure prévue[Install]
+
+[Install]
+WantedBy=timers.target  

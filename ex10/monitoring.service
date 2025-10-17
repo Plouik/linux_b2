@@ -1,0 +1,11 @@
+#/etc/systemd/system/monitoring.service
+[Unit]
+Description=Exécution périodique du monitoring
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/demo/linux_b2/ex10/report_audit.sh
+
+[Install]
+WantedBy=multi-user.target
