@@ -1,3 +1,3 @@
 apt update
-apt install -y acl
+apt install -y nginx auditd audispd-plugins
 service nginx start

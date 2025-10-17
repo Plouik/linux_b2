@@ -2,7 +2,6 @@
 # Script de surveillance intégrée nginx + auditd
 
 LOG_NGINX="/var/log/nginx/access.log"
-AUDIT_LOG="/var/log/audit/audit.log"
 RAPPORT_DIR="/home/demo/linux_b2/report"
 
 surveiller_nginx_audit() {
@@ -22,8 +21,7 @@ surveiller_nginx_audit() {
  
  # Analyse des événements d'audit sur nginx
  echo "--- Événements d'audit nginx ---" >> "$fichier_rapport"
- ausearch -k nginx_log -ts today 2>/dev/null | \
- grep -c "SYSCALL" | \
+ ausearch -k nginx_log -ts today |  grep -c "SYSCALL" | \
  awk '{print "Événements d audit nginx:", $1}' >> "$fichier_rapport"
 
 }
